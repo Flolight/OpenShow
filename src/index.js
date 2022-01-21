@@ -3,10 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThirdwebProvider } from '@3rdweb/react';
+
+const supportedChainIds = [1, 4, 137];
+
+  const connectors = {
+    injected: {},
+    magic: {
+      apiKey: "theapikey",
+      chainId: 1
+    },
+    walletconnect: {},
+    walletlink: {
+      appName: "open show",
+      url: "https://open-show.io",
+      darkMode: false,
+    },
+  };
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThirdwebProvider
+      connectors={connectors}
+      supportedChainIds={supportedChainIds}
+    >
+      <App />
+    </ThirdwebProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

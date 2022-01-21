@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import logo from './OS_logo_500x500.png';
 import './App.css';
+import { ConnectWallet } from '@3rdweb/react';
+import { useWeb3 } from "@3rdweb/hooks";
 
-function App() {
+const App = ({ children }) => {
+
+  const {address, chainId, provider } = useWeb3();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <div className="App">
+          <header className="App-header">
+          <ConnectWallet />
+          <h1 className="text-3xl">      Hello and welcome to Open Show!    </h1>
+            Address: {address}
+            <br />
+            ChainId: {chainId}
+            <img src={logo} className="App-logo" alt="logo" />
+          </header>
+        </div>
   );
 }
 
